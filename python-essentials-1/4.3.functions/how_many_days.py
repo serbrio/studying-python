@@ -4,19 +4,13 @@ from leap_years import is_year_leap
 
 
 def days_in_month(year, month):
-    thirty_days_month = [4, 6, 9, 11]
     if month not in range(1, 13):
         return None
-
-    if month in thirty_days_month:
-        return 30
-    elif month != 2:
-        return 31
-    elif is_year_leap(year):
+    days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if month == 2 and is_year_leap(year):
         return 29
     else:
-        return 28
-
+        return days[month - 1]
 
 
 test_years = [1900, 2000, 2016, 1987, 1999]

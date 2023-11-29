@@ -1,0 +1,8 @@
+ curl -X POST 'http://127.0.0.1:8080/' -d '' -v
+ curl -v --cookie "session_id=57924240aee86ea65c662159c7aa5f7e44c0bcbd" -X GET 'http://127.0.0.1:8080/'
+ curl -v --cookie "session_id=0699612a381d5c0a769e300f23aa4ddf3a5dba5c" -H "Accept: application/json" -X GET '127.0.0.1:8080/'
+ curl -X PUT 'http://127.0.0.1:8080?another_string=hello' -d '' -v
+ curl -v --cookie "session_id=7af20bd0c8bd450ea4b6a3d8ff6f5511782ada9a" -X GET  'http://127.0.0.1:8080/'
+ curl -v --cookie "session_id=7af20bd0c8bd450ea4b6a3d8ff6f5511782ada9a" -X DELETE  'http://127.0.0.1:8080/'
+ curl -v --cookie "session_id=7af20bd0c8bd450ea4b6a3d8ff6f5511782ada9a" -X GET  'http://127.0.0.1:8080/'
+

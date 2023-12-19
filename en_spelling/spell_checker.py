@@ -37,24 +37,29 @@ def get_correct_input(word):
             return
 
 
-def main():
+def get_words_file(words_file="100_hfw.txt"):
     if len(sys.argv) == 2:
         words_file = sys.argv[1]
-    else:
-        words_file = "100_hfw.txt"
+    return words_file
 
-    fglt = Figlet()
+
+def main():
+    words_file = get_words_file()
     words = get_words(words_file)
     ten_words = random.sample(words, 10)
-    characters = cowsay.char_names
-    characters.remove('beavis')
-    characters.remove('miki')
     
+    characters = cowsay.char_names
+    # Removing ugly chracters from the list 
+    for char in ['beavis', 'miki']:
+        characters.remove(char)
+    
+    fglt = Figlet()
+
     score = 0
     for word in ten_words:
         link = get_audio_link(word)
-        i = 0
         
+        i = 0
         while i < 3:
             if link:
                 print("=" * 80)
@@ -77,6 +82,7 @@ def main():
             print("Try again...")
             i += 1
         else:
+            # After 3 attempts passed and no correct spelling entered:
             print("Correct spelling: " + word)
             get_correct_input(word)
             play_sound(link)

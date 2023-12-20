@@ -35,7 +35,7 @@ def get_audio_link(word):
 
 def play_sound(link):
     subprocess.call([
-        "mplayer", "-nolirc", "-really-quiet",
+        "mplayer", "-nolirc", "-really-quiet", "-volume", "100",
         "-noconsolecontrols", link, "&> /dev/null"
         ])
 

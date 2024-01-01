@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+from os import listdir
 import subprocess
 import random
 from scraper import scrape
@@ -47,13 +48,13 @@ def get_correct_input(word):
             return
 
 
-def get_words_file(words_file="100_hfw.txt"):
+def get_words_file(words_file="words/100_hfw.txt"):
     if len(sys.argv) == 2:
         words_file = sys.argv[1]
     return words_file
 
 
-def generate_links_for_words(words, n):
+def generate_n_links(words, n):
     """Generate and return dictionary {"word": "link"}
     with n {key: value} pairs.
     n words are selected randomly from the words list.
@@ -82,7 +83,28 @@ def main():
 
     words_file = get_words_file()
     words = get_words(words_file)
-    words_links = generate_links_for_words(words, 10)
+    #ten_words = random.sample(words, 10)
+    
+    audios = [ file for file in listdir("audio") ] 
+    
+
+    #limit = 0
+    #ten_words = []
+    #while limit < 10:
+    #    word = random.choice(words)
+    #    if word in audios:
+    #        ten_words.append(word)
+    #        limit += 1
+    #        continue
+
+    #    link = get_audio_link(word)
+    #        if link:
+    #            #TODO: wget link to audio
+    #            ten_words.append(word)
+    #            limit += 1
+
+
+    words_links = generate_n_links(words, 10)
 
     characters = cowsay.char_names
     # Removing ugly chracters from the list 

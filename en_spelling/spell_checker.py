@@ -39,6 +39,8 @@ def play_sound(link):
         "mplayer", "-nolirc", "-really-quiet", "-volume", "100",
         "-noconsolecontrols", link, "&> /dev/null"
         ])
+    # Alternative for mplayer:
+    # "ffplay", "-nodisp",  "-autoexit", "-loglevel", "quiet", link, "&> /dev/null"
 
 
 def get_correct_input(word):
